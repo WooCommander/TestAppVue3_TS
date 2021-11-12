@@ -1,0 +1,43 @@
+<template>
+  <select
+    class="select"
+    name=""
+    id=""
+    v-model="modelValue"
+    @change="changeOption"
+  >
+    <option disabled selected value="">Сортировка</option>
+    <option v-for="option in options" :key="option.value" :value="option.value">
+      {{ option.name }}
+    </option>
+  </select>
+</template>
+
+<script lang="ts">
+import { PropType } from "@vue/runtime-core";
+import { Options, Vue } from "vue-class-component";
+import { Emit, Prop } from "vue-property-decorator";
+import Option from "@/types/Option";
+
+@Options({
+  name: "MySelect",
+})
+export default class MySelect extends Vue {
+  @Prop({ type: String }) modelValue: any;
+  @Prop({ type: Array as PropType<Option[]>, default: () => [] }) options: any;
+
+  @Emit("update:modelValue") changeOption(event: any) {
+    return event.target.value;
+  }
+}
+</script>
+
+<style scoped>
+.select {
+  width: 150px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  margin: 8px 0 0 0;
+}
+</style>
