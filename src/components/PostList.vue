@@ -27,7 +27,7 @@ import { PropType } from "@vue/runtime-core";
   name: "PostList",
 })
 export default class PostList extends Vue {
-  @Prop({ type: Array as PropType<Post[]>, required: true }) posts: any;
+  @Prop({ type: Array as PropType<Post[]>, required: true }) posts!: Post[];
 
   @Emit("remove") removePost(post: Post) {
     return post;

@@ -14,7 +14,7 @@ import { Emit, Prop } from "vue-property-decorator";
   name: "MyDialog",
 })
 export default class MyDialog extends Vue {
-  @Prop({ type: Boolean, default: false }) show: any;
+  @Prop({ type: Boolean, default: false }) show!: boolean;
   @Emit("update:show") hideDialoge() {
     return false;
   }

@@ -20,7 +20,7 @@ import { PropType } from "@vue/runtime-core";
   name: "PostItem",
 })
 export default class PostItem extends Vue {
-  @Prop({ type: Object as PropType<Post[]>, required: true }) post: any;
+  @Prop({ type: Object as PropType<Post>, required: true }) post!: Post;
   @Emit("remove") removePost() {
     return this.post;
   }

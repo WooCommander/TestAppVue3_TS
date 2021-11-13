@@ -10,7 +10,7 @@ import { Emit, Prop } from "vue-property-decorator";
   name: "MyInput",
 })
 export default class MyInput extends Vue {
-  @Prop({ type: String }) modelValue: any;
+  @Prop({ type: String }) modelValue!: string;
   @Emit("update:modelValue") updateInput(event: any) {
     return event.target.value;
   }

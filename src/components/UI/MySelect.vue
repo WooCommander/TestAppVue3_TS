@@ -23,8 +23,8 @@ import Option from "@/types/Option";
   name: "MySelect",
 })
 export default class MySelect extends Vue {
-  @Prop({ type: String }) modelValue: any;
-  @Prop({ type: Array as PropType<Option[]>, default: () => [] }) options: any;
+  @Prop({ type: String }) modelValue!: Option;
+  @Prop({ type: Array as PropType<Option[]>, default: () => [] }) options!: Option;
 
   @Emit("update:modelValue") changeOption(event: any) {
     return event.target.value;
@@ -39,5 +39,9 @@ export default class MySelect extends Vue {
   border-radius: 10px;
   border: 1px solid #000;
   margin: 8px 0 0 0;
+  padding-left: 7px;
+  background: rgb(255, 255, 255);
+  font-weight: 500;
+  font-size: 16px;
 }
 </style>
