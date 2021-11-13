@@ -21,12 +21,12 @@ export default class MyButton extends Vue {}
   border-radius: 10px;
   color: rgb(255, 255, 255);
   background: rgb(140, 190, 23);
-  margin: 10px 10px 0 0;
   cursor: pointer;
   transition: 0.5s;
 }
 .create-btn {
   background: rgb(13, 180, 221);
+  margin: 10px 10px 0 0;
 }
 .create-btn:hover {
   background: rgb(12, 122, 224);

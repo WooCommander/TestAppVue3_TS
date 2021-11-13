@@ -4,8 +4,28 @@
       <div><strong>Название: </strong>{{ post.title }}</div>
       <div><strong>Описание: </strong>{{ post.body }}</div>
     </div>
-    <div class="post__btn">
+    <div class="post__interface">
       <my-button class="btn delete-btn" @click="removePost">Удалить</my-button>
+      <div class="post__interface__reaction">
+        <div class="reaction like">
+          <img
+            src="@/img/hand_like_icon.png"
+            alt=""
+            class="like"
+            @click="DoLike"
+          />
+          <span class="count">{{ like }}</span>
+        </div>
+        <div class="reaction dislike">
+          <img
+            src="@/img/hand_dislike_icon.png"
+            alt=""
+            class="dislike"
+            @click="DoDislike"
+          />
+          <span class="count">{{ dislike }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -24,15 +44,63 @@ export default class PostItem extends Vue {
   @Emit("remove") removePost() {
     return this.post;
   }
+  like = 0;
+  flagLike = false;
+  dislike = 0;
+  flagDisLike = false;
+
+  DoLike() {
+    if (this.flagLike === false) {
+      if (this.flagDisLike === true) {
+        this.flagDisLike = false;
+        this.dislike--;
+      }
+      this.flagLike = true;
+      this.like++;
+    } else {
+      this.flagLike = false;
+      this.like--;
+    }
+  }
+  DoDislike() {
+    if (this.flagDisLike === false) {
+      if (this.flagLike === true) {
+        this.flagLike = false;
+        this.like--;
+      }
+      this.flagDisLike = true;
+      this.dislike++;
+    } else {
+      this.flagDisLike = false;
+      this.dislike--;
+    }
+  }
 }
 </script>
 
 <style scoped>
 .post {
-  margin: 15px 0px;
   padding: 15px;
   border-radius: 5px;
   background: #fff;
   color: #413c3c;
+}
+.post__interface {
+  margin: 10px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post__interface__reaction {
+  display: flex;
+}
+.reaction {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+.like,
+.dislike {
+  cursor: pointer;
 }
 </style>

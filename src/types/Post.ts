@@ -1,7 +1,7 @@
 interface Post{
+	id: string,
 	title: string,
 	body: string,
-	id: string,
 }
 
 export default Post

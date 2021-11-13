@@ -56,7 +56,6 @@ export default class App extends Vue {
     { value: "title", name: "По названию" },
     { value: "body", name: "По описанию" },
   ];
-
   createPost(post: Post) {
     this.posts.push(post);
     this.dialogVisible = false;
